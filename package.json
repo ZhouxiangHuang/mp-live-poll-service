@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/ZhouxiangHuang/wechat-mp-live-poll#readme",
   "dependencies": {
+    "koa": "^2.5.2",
+    "koa-socket": "^4.4.0",
     "socket.io": "^2.1.1"
   }
 }

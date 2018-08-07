@@ -1,0 +1,20 @@
+{
+  "name": "wechat-mp-poll",
+  "version": "1.0.0",
+  "description": "wechat mini application for live poll",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZhouxiangHuang/wechat-mp-live-poll.git"
+  },
+  "author": "UncleJoe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZhouxiangHuang/wechat-mp-live-poll/issues"
+  },
+  "homepage": "https://github.com/ZhouxiangHuang/wechat-mp-live-poll#readme"
+}

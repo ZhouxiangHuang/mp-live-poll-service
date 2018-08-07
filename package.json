@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ZhouxiangHuang/wechat-mp-live-poll/issues"
   },
-  "homepage": "https://github.com/ZhouxiangHuang/wechat-mp-live-poll#readme"
+  "homepage": "https://github.com/ZhouxiangHuang/wechat-mp-live-poll#readme",
+  "dependencies": {
+    "socket.io": "^2.1.1"
+  }
 }

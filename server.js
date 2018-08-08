@@ -39,6 +39,7 @@ const joinPoll = (socket, pollName) => {
     users: [],
     totalVotes: 0,
   })
+  poll.save();
   app._io.to(pollName).emit('chat message', 'This is room ' + pollName);
   console.log(poll);
 }

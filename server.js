@@ -14,17 +14,21 @@ app._io.on('connection', socket => {
   console.log('建立连接了');
   let clientId = socket.client.id;
 
+  joinPoll(socket, clientId);
+
   socket.on('chat message', function (msg) {
     app._io.emit('chat message', msg);
     console.log('client id: ' + clientId + 'message: ' + msg);
   });
-
-  // socket.emit('serverEmit', '我接收到增加购物车的事件了'); /*发给指定用户*/
-
-  // app._io.emit('serverEmit', '我接收到增加购物车的事件了'); /*广播*/
-
 })
 
+let currentPoll = {};
+const joinPoll = (socket, poll) => {
+  socket.join(poll);
+  currentPoll[socket.id] = poll;
+  app._io.to(poll).emit('chat message', 'This is room ' + poll);
+  console.log(currentPoll);
+}
 
 app.use(main);
 app.listen(3000);

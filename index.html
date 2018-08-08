@@ -53,10 +53,18 @@
 </head>
 
 <script src="/socket.io/socket.io.js"></script>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
     var socket = io();
-</script>
+ 
+        // 把文本框的内容发送到服务器
+        socket.emit("serverListen","我来自客户端");
+        console.log(111);
 
+    socket.on("serverEmit",function(serverMsg){
+       alert(serverMsg);
+    });
+</script>
 <body>
     <ul id="messages"></ul>
     <form action="">

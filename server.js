@@ -2,6 +2,9 @@ const Koa = require('koa');
 const app = new Koa();
 const fs = require('fs');
 const IO = require('koa-socket');
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/wechat-live-polling');
+
 const io = new IO();
 io.attach(app)
 
@@ -14,7 +17,7 @@ app._io.on('connection', socket => {
   console.log('建立连接了');
   let clientId = socket.client.id;
 
-  joinPoll(socket, clientId);
+  joinPoll(socket, '水果讨论组');
 
   socket.on('chat message', function (msg) {
     app._io.emit('chat message', msg);
@@ -22,12 +25,22 @@ app._io.on('connection', socket => {
   });
 })
 
-let currentPoll = {};
-const joinPoll = (socket, poll) => {
-  socket.join(poll);
-  currentPoll[socket.id] = poll;
-  app._io.to(poll).emit('chat message', 'This is room ' + poll);
-  console.log(currentPoll);
+const Poll = mongoose.model('Poll', {
+  name: String,
+  creatorId: String,
+  users: Array,
+  totalVotes: Number
+});
+const joinPoll = (socket, pollName) => {
+  socket.join(pollName);
+  const poll = new Poll({
+    name: '西瓜还是哈密瓜?',
+    creatorId: socket.client.id,
+    users: [],
+    totalVotes: 0,
+  })
+  app._io.to(pollName).emit('chat message', 'This is room ' + pollName);
+  console.log(poll);
 }
 
 app.use(main);

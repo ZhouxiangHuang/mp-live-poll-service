@@ -4,7 +4,6 @@ const fs = require('fs');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-
 const main = ctx => {
   ctx.type = 'html';
   ctx.body = fs.createReadStream('./index.html');

@@ -55,21 +55,24 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
+   $(function () {
     var socket = io();
- 
-        // 把文本框的内容发送到服务器
-        socket.emit("serverListen","我来自客户端");
-        console.log(111);
-
-    socket.on("serverEmit",function(serverMsg){
-       alert(serverMsg);
+    $('form').submit(function(){
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
     });
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
+    });
+  });
 </script>
 <body>
     <ul id="messages"></ul>
     <form action="">
-        <input id="m" autocomplete="off" />
-        <button>Send</button>
+        <!-- <input id="m" autocomplete="off" /> -->
+        <button>投A</button>
+        <button>投B</button>
     </form>
 </body>
 

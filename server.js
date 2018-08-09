@@ -26,13 +26,13 @@ router.post('/pollCreate', async ctx => {
   //接收客户端提交的数据 、主要做的操作就是增加数据
   console.log(ctx.request.body);
   var reqBody = ctx.request.body;
-    var pollObj = {
-      title: reqBody.title,
-      description: reqBody.description,
-      creatorId: reqBody.openID,
-      anonymous: reqBody.anonymous,
-      options: reqBody.options
-    }
+  var pollObj = {
+    title: reqBody.title,
+    description: reqBody.description,
+    creatorId: reqBody.openID,
+    anonymous: reqBody.anonymous,
+    options: reqBody.options
+  }
   var poll = new Poll(pollObj);
   ctx.body = await savePoll(poll);
 })

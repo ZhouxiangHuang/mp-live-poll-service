@@ -31,6 +31,7 @@ const Poll = mongoose.model('Poll', {
   users: Array,
   totalVotes: Number
 });
+
 const joinPoll = (socket, pollName) => {
   socket.join(pollName);
   const poll = new Poll({

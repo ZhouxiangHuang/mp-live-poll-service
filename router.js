@@ -1,17 +1,24 @@
-const Koa = require('koa');
+// const Koa = require('koa');
 const Router = require('koa-router');
 
-const app = new Koa();
+// const app = new Koa();
 const router = new Router();
-const userctrl = require('../controllers/users/userController');   // 引入用户模块逻辑层
+
+//引入控制模块Controllers
+const userctrl = require('./controllers/UserController');
+const pollctrl = require('./controllers/PollController');
 
 router
+  //用户接口
   .post('/api/user/register', userctrl.register)
-  .get('/api/user/detail', (cxt, next) => {
+  .post('/api/user/login', userctrl.login)
+  .get('/api/user/detail', userctrl.detail)
 
-  })
-  
+  //投票接口
+  .post('api/poll/create', pollctrl.create)
 
-app
-  .use(router.routes())
-  .use(router.allowedMethods());
+module.exports = router;
+
+// app
+//   .use(router.routes())
+//   .use(router.allowedMethods());

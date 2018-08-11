@@ -31,5 +31,4 @@ var pollSchema = new Schema({
         default: new Date()
     }
 });
-
-module.exports = pollSchema;
+module.exports =  mongoose.model('Poll', pollSchema);

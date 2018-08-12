@@ -5,8 +5,8 @@ const Router = require('koa-router');
 const router = new Router();
 
 //引入控制模块Controllers
-const userctrl = require('./controllers/UserController');
-const pollctrl = require('./controllers/PollController');
+const userctrl = require('./controllers/userController');
+const pollctrl = require('./controllers/pollController');
 
 router
   //用户接口
@@ -15,7 +15,7 @@ router
   .get('/api/user/detail', userctrl.detail)
 
   //投票接口
-  .post('api/poll/create', pollctrl.create)
+  .post('/api/poll/create', pollctrl.create)
 
 module.exports = router;
 

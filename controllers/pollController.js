@@ -2,8 +2,7 @@ class PollController {
 
     //创建投票
     async create(ctx) {
-        return new Promise(resolve => {
-            poll.save(function (error, doc) {
+        await poll.save(function (error, doc) {
                 if (error || !doc) {
                     resolve({
                         "success": false,
@@ -16,12 +15,11 @@ class PollController {
                     });
                 }
             })
-        });
     }
 
     //参与投票
     async join(ctx) {
- 
+
     }
 
 }

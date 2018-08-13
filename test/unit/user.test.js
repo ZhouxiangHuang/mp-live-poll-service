@@ -12,22 +12,20 @@ describe('routes : /api/user', () => {
   describe('POST /api/user/register', () => {
     it('should return json', (done) => {
       chai.request(server)
-      .post('/api/user/register')
-      .type('application/json')
-      .send({
-        '_method': 'put',
-        'password': '123',
-        'confirmPassword': '123'
-      })
-      .end((err, res) => {
-        
-        // should.not.exist(err);
-        // res.status.should.eql(200);
-        // res.type.should.eql('application/json');
-        // res.body.status.should.equal('success');
-        // res.body.message.should.eql('hello, world!');
-        done();
-      });
+        .post('/api/user/register')
+        .type('application/json')
+        .send({
+          'code': 'test123',
+        })
+        .end((err, res) => {
+
+          // should.not.exist(err);
+          // res.status.should.eql(200);
+          // res.type.should.eql('application/json');
+          // res.body.status.should.equal('success');
+          // res.body.message.should.eql('hello, world!');
+          done();
+        });
     });
   });
 

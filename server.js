@@ -1,12 +1,16 @@
 const Koa = require('koa');
 const app = new Koa();
 const router = require('./router');
-const socket = require('./socket')(app);
+const socket = require('./socket');
 const timer = require('./middlewares/timer')
 const bodyParser = require('koa-bodyparser');
 const response = require('./middlewares/response');
 const filter = require('./middlewares/filter');
 const json = require('koa-json');
+const db = require('./models/db');
+
+socket(app); //start socket
+db.connect('mongodb://localhost/wechat-live-polling');//start mongoose
 
 app.use(bodyParser({
   extendTypes: {
@@ -15,10 +19,10 @@ app.use(bodyParser({
 }));
 
 const server = app
+  .use(filter)
   .use(json())
   .use(timer)
   .use(response)
-  .use(filter)
   .use(router.routes())
   .use(router.allowedMethods())
   .listen(3000);

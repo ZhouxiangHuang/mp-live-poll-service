@@ -4,7 +4,7 @@
 */ 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/wechat-live-polling');
+// mongoose.connect('mongodb://localhost/wechat-live-polling');
 
 // 连接成功 
 mongoose.connection.on('connected', function() {
@@ -20,3 +20,5 @@ mongoose.connection.on('error', function(err) {
 mongoose.connection.on('disconnected', function() {
   console.log('Mongoose connection disconnected');
 });
+
+module.exports = mongoose;

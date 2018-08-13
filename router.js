@@ -5,8 +5,8 @@ const Router = require('koa-router');
 const router = new Router();
 
 //引入控制模块Controllers
-const userctrl = require('./controllers/userController');
-const pollctrl = require('./controllers/pollController');
+const userctrl = require('./controllers/UserController');
+const pollctrl = require('./controllers/PollController');
 
 router
   //用户接口

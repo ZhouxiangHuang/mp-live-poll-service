@@ -1,8 +1,8 @@
 class UserController {
     // 用户注册
     async register(ctx) {
-        // await ……
-        console.log('register');
+        let reqBody = ctx.request.body;
+        console.log(reqBody);
     }
 
     // 用户登录
@@ -12,7 +12,10 @@ class UserController {
 
     // 用户信息
     async detail(ctx) {
-        console.log('detail');
+        return ctx.success({
+            msg: '创建投票成功!',
+            data: '哈哈哈'
+        });
     }
 }
 

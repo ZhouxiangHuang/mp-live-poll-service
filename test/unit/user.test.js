@@ -7,20 +7,37 @@ chai.use(chaiHttp);
 
 const server = require('../../server');
 
-describe('routes : index', () => {
+describe('routes : /api/user', () => {
 
-  describe('GET /', () => {
+  describe('POST /api/user/register', () => {
     it('should return json', (done) => {
       chai.request(server)
-      .get('/')
+      .post('/api/user/register')
+      .type('application/json')
+      .send({
+        '_method': 'put',
+        'password': '123',
+        'confirmPassword': '123'
+      })
       .end((err, res) => {
-        should.not.exist(err);
-        res.status.should.eql(200);
-        res.type.should.eql('application/json');
-        res.body.status.should.equal('success');
-        res.body.message.should.eql('hello, world!');
+        
+        // should.not.exist(err);
+        // res.status.should.eql(200);
+        // res.type.should.eql('application/json');
+        // res.body.status.should.equal('success');
+        // res.body.message.should.eql('hello, world!');
         done();
       });
+    });
+  });
+
+  describe('GET /api/user/detail', () => {
+    it('should return json', (done) => {
+      chai.request(server)
+        .get('/api/user/detail')
+        .end((err, res) => {
+          done();
+        });
     });
   });
 

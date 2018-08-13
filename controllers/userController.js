@@ -26,10 +26,13 @@ class UserController {
 
     // 用户信息
     async detail(ctx) {
-        return ctx.success({
-            msg: '创建投票成功!',
-            data: '哈哈哈'
+        let queries = ctx.request.query;
+        let user = await UserModel.find({
+            openId: '6540748.577970519abcasdf'
         });
+        return ctx.success({
+            data: user
+        })
     }
 }
 

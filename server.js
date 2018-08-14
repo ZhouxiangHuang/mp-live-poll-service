@@ -8,9 +8,10 @@ const response = require('./middlewares/response');
 const filter = require('./middlewares/filter');
 const json = require('koa-json');
 const db = require('./models/db');
+const auth = require('./middlewares/auth');
 
 socket(app); //start socket
-db.connect('mongodb://localhost/wechat-live-polling');//start mongoose
+db.connect('mongodb://localhost/wechat-live-polling'); //start mongoose
 
 app.use(bodyParser({
   extendTypes: {
@@ -19,6 +20,7 @@ app.use(bodyParser({
 }));
 
 const server = app
+  .use(auth)
   .use(filter)
   .use(json())
   .use(timer)

@@ -1,5 +1,6 @@
 const wechatApi = require('../api/wechat');
 const UserModel = require('../models/userModel');
+const authctrl = require('./AuthController');
 
 class UserController {
     // 用户注册
@@ -13,9 +14,11 @@ class UserController {
         if (!result) return ctx.error({
             msg: '注册失败'
         });
+
+        let token = await authctrl.genToken(userWechatInfo.openid);
         return ctx.success({
             msg: '注册成功',
-            data: result
+            data: {token: token}
         });
     }
 
@@ -27,8 +30,9 @@ class UserController {
     // 用户信息
     async detail(ctx) {
         let queries = ctx.request.query;
+        let userWechatInfo = await wechatApi.userInfo(queries.code);
         let user = await UserModel.find({
-            openId: '6540748.577970519abcasdf'
+            openId: userWechatInfo.openid
         });
         return ctx.success({
             data: user

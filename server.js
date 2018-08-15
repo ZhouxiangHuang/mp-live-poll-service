@@ -20,11 +20,11 @@ app.use(bodyParser({
 }));
 
 const server = app
+  .use(response)
   .use(auth)
   .use(filter)
   .use(json())
   .use(timer)
-  .use(response)
   .use(router.routes())
   .use(router.allowedMethods())
   .listen(3000);

@@ -11,12 +11,7 @@
  */
 
 module.exports = async (ctx, next) => {
-    ctx.error = ({
-        data,
-        msg,
-        status,
-        error
-    }) => {
+    ctx.error = ({data,msg,status,error}) => {
         ctx.status = status || 400;
         ctx.body = {
             code: -200,
@@ -25,10 +20,7 @@ module.exports = async (ctx, next) => {
             error
         };
     }
-    ctx.success = ({
-        msg,
-        data
-    }) => {
+    ctx.success = ({msg,data}) => {
         ctx.body = {
             code: 200,
             msg: '请求成功',

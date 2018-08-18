@@ -5,7 +5,7 @@ const socket = app => {
     io.attach(app);
 
     app._io.on('connect', (ctx, data) => {
-        console.log('connected!');
+        console.log('websocket connected!');
     })
 
     app._io.emit('chat message', 'tsup');

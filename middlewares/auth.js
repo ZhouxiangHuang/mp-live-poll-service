@@ -1,7 +1,7 @@
 const authctrl = require('../controllers/AuthController');
 
 module.exports = async (ctx, next) => {
-    if (ctx.request.url == '/api/user/register') {
+    if (ctx.request.url == '/api/user/register' || ctx.request.url == '/api/user/validate') {
 
     } else {
         let token = ctx.request.header.authorization;
@@ -12,7 +12,7 @@ module.exports = async (ctx, next) => {
             }
         } catch (err) {
             return ctx.error({
-                msg: 'Authorization Failed!'
+                msg: '验证失败'
             });
         }
     }

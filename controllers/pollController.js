@@ -8,7 +8,7 @@ class PollController {
         let pollObj = {
             title: reqBody.title,
             description: reqBody.description,
-            creatorId: reqBody.openID,
+            creatorId: ctx.state.user.openId,
             anonymous: reqBody.anonymous,
             options: reqBody.options
         }

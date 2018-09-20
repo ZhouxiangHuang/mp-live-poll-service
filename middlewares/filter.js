@@ -1,7 +1,7 @@
 /*
-* @ use 统一try catch处理中间件
-* @ 用于捕获内部错误，输出日志信息
-*/ 
+ * @ use 统一try catch处理中间件
+ * @ 用于捕获内部错误，输出日志信息
+ */
 const tracer = require('tracer');
 const logger = tracer.colorConsole({
   level: 'error',
@@ -10,20 +10,25 @@ const logger = tracer.colorConsole({
   path: __dirname
 });
 
-module.exports = async (ctx,next)=>{
-  try{
+module.exports = async (ctx, next) => {
+  try {
     await next();
-  } catch (err){
+  } catch (err) {
     if (!err) {
-      return ctx.error({ msg:new Error('未知错误!') });
-    } 
-    if (typeof(err)=='string') {
-      return ctx.error({ msg:new Error(err) });
+      return ctx.error({
+        msg: new Error('未知错误!')
+      });
     }
-      logger.error(err.stack);
-      ctx.error({msg:'服务器错误!',error: err, status: ctx.status });
+    if (typeof (err) == 'string') {
+      return ctx.error({
+        msg: new Error(err)
+      });
+    }
+    logger.error(err.stack);
+    ctx.error({
+      msg: '服务器错误!',
+      error: err,
+      status: ctx.status
+    });
   }
 }
-
-
-

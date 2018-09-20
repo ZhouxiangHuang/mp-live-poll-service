@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "./node_modules/mocha/bin/_mocha ./test/**/*.test.js",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,13 +18,17 @@
   },
   "homepage": "https://github.com/ZhouxiangHuang/wechat-mp-live-poll#readme",
   "dependencies": {
+    "jsonwebtoken": "^8.3.0",
     "koa": "^2.5.2",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
+    "koa-jwt": "^2.2.4",
     "koa-router": "^7.4.0",
     "koa-socket": "^4.4.0",
     "mongoose": "^5.2.7",
-    "tracer": "^0.9.1"
+    "socket.io": "^2.1.1",
+    "tracer": "^0.9.1",
+    "websocket": "^1.0.26"
   },
   "devDependencies": {
     "chai": "^4.1.2",

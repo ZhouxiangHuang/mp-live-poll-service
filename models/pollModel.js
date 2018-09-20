@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
 var userSchema = new Schema({
     openId: { type: [String], index: true }
 });
@@ -11,7 +10,6 @@ var choiceSchema = new Schema({
     text: String,
     users: [userSchema]
 });
-
 
 var pollSchema = new Schema({
     title: String,

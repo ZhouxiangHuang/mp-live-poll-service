@@ -5,13 +5,13 @@ const Router = require('koa-router');
 const router = new Router();
 
 //引入控制模块Controllers
-const userctrl = require('./controllers/userController');
-const pollctrl = require('./controllers/pollController');
+const userctrl = require('./controllers/UserController');
+const pollctrl = require('./controllers/PollController');
 
 router
   //用户接口
   .post('/api/user/register', userctrl.register)
-  .post('/api/user/login', userctrl.login)
+  .post('/api/user/validate', userctrl.validate)
   .get('/api/user/detail', userctrl.detail)
 
   //投票接口
@@ -20,7 +20,3 @@ router
   .get('/api/poll/get-poll', pollctrl.getPoll)
 
 module.exports = router;
-
-// app
-//   .use(router.routes())
-//   .use(router.allowedMethods());

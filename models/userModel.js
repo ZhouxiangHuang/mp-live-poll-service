@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
     headPortrait: String,  //头像
-    openId: String,
+    openId: { type: [String], index: true },
     nickName: String
 })
 

@@ -16,5 +16,7 @@ router
 
   //投票接口
   .post('/api/poll/create', pollctrl.create)
+  .get('/api/poll/get-all-poll', pollctrl.getAllPoll)
+  .get('/api/poll/get-poll', pollctrl.getPoll)
 
 module.exports = router;
